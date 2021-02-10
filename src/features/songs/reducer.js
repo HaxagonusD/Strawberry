@@ -3,6 +3,10 @@ const initialState = {
   savedSongs: [],
 };
 
+const fetchSongs = () => {
+  return async (blobUrl) => {};
+};
+
 const songsReducer = (state = initialState, action) => {
   const actions = {};
   const currentAction = actions[action.type];

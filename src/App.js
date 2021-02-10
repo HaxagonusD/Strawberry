@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSongs } from "./features/songs/actions";
+
 import "./App.css";
 
 function App() {
+  // const dispatch = useDispatch();
+  // const blobUrl = useSelector((state) => state.recorder.blobUrl);
+  // dispatch(fetchSongs(blobUrl));
+
   const mediaRecorder = useRef(null);
   const chunks = useRef([]);
   const [setup, setSetup] = useState(false);
