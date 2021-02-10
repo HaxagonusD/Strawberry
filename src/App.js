@@ -3,10 +3,9 @@ import "./App.css";
 
 function App() {
   const mediaRecorder = useRef(null);
+  const chunks = useRef([]);
   const [setup, setSetup] = useState(false);
   const [audioPreview, setAudioPreview] = useState(undefined);
-
-  const chunks = useRef([]);
 
   useEffect(() => {
     if (navigator?.mediaDevices?.getUserMedia) {
