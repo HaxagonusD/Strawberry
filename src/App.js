@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 import { fetchSongs } from "./features/songs/actions";
 
 import "./App.css";
 import SongFinder from "../src/components /SongFinder";
 function App() {
-
   // const dispatch = useDispatch();
   // const blobUrl = useSelector((state) => state.recorder.blobUrl);
   // dispatch(fetchSongs(blobUrl));
@@ -72,7 +71,6 @@ function App() {
   );
 
   return <div className="App">{recorder}</div>;
-
 }
 
 export default App;
