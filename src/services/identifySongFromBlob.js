@@ -21,11 +21,9 @@ async function identifySongFromBlob(blob) {
     headers: { "Content-Type": "multipart/form-data" },
   })
     .then(function (response) {
-      console.log(response);
       return response;
     })
     .catch(function (error) {
-      console.log("This is an Error:", error);
       return error;
     });
 }

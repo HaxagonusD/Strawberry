@@ -15,3 +15,9 @@ export const mediaSupported = () => {
     type: "recorder/mediaSupported",
   };
 };
+
+export const mediaNotSupported = () => {
+  return {
+    type: "recorder/mediaNotSupported",
+  };
+};

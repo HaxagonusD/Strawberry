@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSongs } from "./features/songs/actions";
-import configureRecorder from "./services/configureRecorder";
+import createRecorder from "./services/configureRecorder";
 
 import "./App.css";
 import SongFinder from "../src/components /SongFinder";
@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     if (navigator?.mediaDevices?.getUserMedia) {
       console.log("getUserMedia supported ");
-      mediaRecorder.current = configureRecorder();
+      mediaRecorder.current = createRecorder();
     } else {
       console.log("getUserMedia not supported on your browser");
     }

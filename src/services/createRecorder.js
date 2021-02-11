@@ -1,4 +1,6 @@
-const configureRecorder = async () => {
+// make this recorder use redux
+
+const createRecorder = async () => {
   const chunks = [];
   let mediaRecorderStream = await navigator.mediaDevices
     .getUserMedia({ audio: true })
@@ -29,4 +31,5 @@ const configureRecorder = async () => {
   console.log("We got the Stream", mediaRecorder);
   return mediaRecorder;
 };
-export default configureRecorder;
+
+export default createRecorder;
