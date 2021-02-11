@@ -14,10 +14,17 @@ export const errorFetchingSongs = (payload) => {
   };
 };
 
-export const fetchSongs = () => {
+export const loadingSong = () => {
+  return {
+    type: "songs/loadingSong",
+  };
+};
+
+export const fetchSongs = (blobUrl) => {
   return async (dispatch, getState) => {
-    const blobUrl = getState().recorder.blobUrl;
-    const songData = identifySongFromBlob(blobUrl);
+    const songData = await identifySongFromBlob(blobUrl);
+    dispatch(loadingSong());
+    console.log(songData);
     songData
       ? dispatch(songLoaded(songData))
       : dispatch(errorFetchingSongs(songData));

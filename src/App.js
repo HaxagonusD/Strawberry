@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-import { fetchSongs } from "./features/songs/actions";
-import createRecorder from "./services/configureRecorder";
+import useRecorder from "./hooks/useRecorder";
+import { useSelector } from "react-redux";
 
 import "./App.css";
 import SongFinder from "../src/components /SongFinder";
@@ -10,32 +8,20 @@ function App() {
   // const blobUrl = useSelector((state) => state.recorder.blobUrl);
   // dispatch(fetchSongs(blobUrl));
 
-  const mediaRecorder = useRef(null);
+  const mediaRecorder = useRecorder();
+  const recording = useSelector((state) => state.recorder.recording);
 
-  useEffect(() => {
-    if (navigator?.mediaDevices?.getUserMedia) {
-      console.log("getUserMedia supported ");
-      mediaRecorder.current = createRecorder();
-    } else {
-      console.log("getUserMedia not supported on your browser");
-    }
-  }, []);
-
-  const recorder = mediaRecorder.current ? (
+  const recorder = mediaRecorder ? (
     <div>
       <button
         onClick={() => {
-          mediaRecorder.current.start();
+          console.log(mediaRecorder.state);
+          mediaRecorder.start();
+
+          setTimeout(() => mediaRecorder.stop(), 15000);
         }}
       >
-        Start Recorder
-      </button>
-      <button
-        onClick={() => {
-          mediaRecorder.current.stop();
-        }}
-      >
-        Stop
+        {recording ? "Listening" : "Strawberry"}
       </button>
     </div>
   ) : (
