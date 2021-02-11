@@ -1,16 +1,17 @@
-
+import axios from "axios";
+const fs = require("fs");
 async function identifySongFromBlob(blob) {
   let data = {
     api_token: "041abfc5c3c035b2e8978417c7fcfa10",
-    url: blob,
+    audio: blob,
     return: "apple_music,spotify,lyrics",
   };
 
+  console.log(data.file);
+
   let song = new FormData();
   song.append("api_token", data.api_token);
-
-  song.append("url", data.url);
-
+  song.append("audio", data.audio);
   song.append("return", data.return);
 
   return await axios({
@@ -30,4 +31,3 @@ async function identifySongFromBlob(blob) {
 }
 
 export default identifySongFromBlob;
-

@@ -9,3 +9,9 @@ export const stopRecording = () => {
     type: "recorder/stopRecording",
   };
 };
+
+export const mediaSupported = () => {
+  return {
+    type: "recorder/mediaSupported",
+  };
+};
