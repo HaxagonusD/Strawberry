@@ -1,34 +1,46 @@
-import useRecorder from "./hooks/useRecorder";
-import { useSelector } from "react-redux";
-
+/** @jsxImportSource @emotion/react */
+import tw from "twin.macro";
 import "./App.css";
-import SongFinder from "../src/components /SongFinder";
+import StrawberryButton from "./components/StrawberryButton";
+import { useSpring, animated } from "react-spring";
 function App() {
   // const dispatch = useDispatch();
   // const blobUrl = useSelector((state) => state.recorder.blobUrl);
   // dispatch(fetchSongs(blobUrl));
 
-  const mediaRecorder = useRecorder();
-  const recording = useSelector((state) => state.recorder.recording);
-
-  const recorder = mediaRecorder ? (
-    <div>
-      <button
-        onClick={() => {
-          console.log(mediaRecorder.state);
-          mediaRecorder.start();
-
-          setTimeout(() => mediaRecorder.stop(), 15000);
-        }}
+  const [props, setProps] = useSpring(() => ({
+    transform: "translateY(0%)",
+  }));
+  return (
+    <div tw="w-full h-screen overflow-hidden">
+      <div
+        className="App"
+        tw="flex w-full h-screen justify-around items-center bg-melon flex-col "
       >
-        {recording ? "Listening" : "Strawberry"}
-      </button>
+        <StrawberryButton />
+        <div tw="flex justify-around w-full">
+          <div
+            onClick={() => {
+              setProps({ transform: "translateY(-50%)" });
+            }}
+            tw="text-white text-2xl"
+          >
+            About
+          </div>
+          <div tw="text-white text-2xl">Save</div>
+        </div>
+        <div tw="bg-white"></div>
+      </div>
+      <animated.div style={props} tw="min-h-screen relative bg-blue-500">
+        <p tw="relative text-red-500">
+          Ever not know the name of the song you’re listening to? Strawberry is
+          here to help you out. Just press the Strawberry icon and in a few
+          moments you will know the name of the song with lyrics to it too, if
+          any.
+        </p>
+      </animated.div>
     </div>
-  ) : (
-    ""
   );
-
-  return <div className="App">{recorder}</div>;
 }
 
 export default App;
