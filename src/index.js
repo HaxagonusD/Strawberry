@@ -5,6 +5,8 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./features/store";
 import { GlobalStyles } from "twin.macro";
+require("typeface-yellowtail");
+require("typeface-amaranth");
 
 ReactDOM.render(
   <React.StrictMode>

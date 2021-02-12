@@ -5,6 +5,14 @@ module.exports = {
     extend: {
       colors: {
         melon: "#FFB5A7",
+        isbaelline: "#F8EDEB",
+        pink: "#FCD5CE",
+        puff: "#F9DCC4",
+        crayola: "#FEC89A",
+      },
+      fontFamily: {
+        amaranth: ["Amaranth", "sans-serif"],
+        yellowtail: ["Yellowtail", "cursive"],
       },
     },
   },

@@ -2,7 +2,7 @@ const initialState = {
   allSongs: {},
   lastSongIdentified: {},
   savedSongs: [],
-  loading: true,
+  loading: false,
   error: false,
   errorMessage: "",
 };

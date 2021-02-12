@@ -22,11 +22,11 @@ export const loadingSong = () => {
 
 export const fetchSongs = (blobUrl) => {
   return async (dispatch, getState) => {
-    const songData = await identifySongFromBlob(blobUrl);
     dispatch(loadingSong());
-    console.log(songData);
-    songData
-      ? dispatch(songLoaded(songData))
-      : dispatch(errorFetchingSongs(songData));
+    const songDataOrError = await identifySongFromBlob(blobUrl);
+    console.log(songDataOrError);
+    songDataOrError
+      ? dispatch(songLoaded(songDataOrError))
+      : dispatch(errorFetchingSongs(songDataOrError));
   };
 };
