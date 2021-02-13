@@ -5,14 +5,20 @@ import StrawberryButton from "./components/StrawberryButton";
 import { animated } from "react-spring";
 import useTranslateYHalfScreen from "./hooks/useTranslateYHalfScreen";
 import useTranslateXHalfScreen from "./hooks/useTranslateXHalfScreen";
+import { useMediaQuery } from "react-responsive";
 function App() {
-  const [props, start, undo] = useTranslateXHalfScreen();
+  const [aboutXProps, startAboutX, undoAboutX] = useTranslateXHalfScreen();
+  const [aboutYProps, startAboutY, undoAboutY] = useTranslateYHalfScreen();
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 1024px)",
+  });
 
   return (
     <div tw="w-full h-screen overflow-hidden">
       <div
         onClick={() => {
-          undo();
+          isDesktopOrLaptop ? undoAboutX() : undoAboutY();
         }}
         className="App"
         style={{
@@ -27,10 +33,10 @@ function App() {
         </h1>
         <StrawberryButton />
         <div tw="w-full ">
-          <div tw="flex justify-around lg:mx-24 p-8 ">
+          <div tw="flex justify-around lg:mx-24 ">
             <div
               onClick={() => {
-                start();
+                isDesktopOrLaptop ? startAboutX() : startAboutY();
               }}
               tw="text-white text-4xl hover:cursor-pointer bg-isbaelline text-melon lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
             >
@@ -43,10 +49,8 @@ function App() {
         </div>
       </div>
       <animated.div
-        style={{
-          ...props,
-        }}
-        tw="min-h-screen absolute inset-y-0 left-0 bg-isbaelline w-1/2 p-10 rounded "
+        style={isDesktopOrLaptop ? aboutXProps : aboutYProps}
+        tw="min-h-screen lg:absolute lg:inset-y-0 lg:left-0 bg-isbaelline w-full lg:w-1/2 p-10 rounded shadow-xl "
       >
         <h1 tw="text-5xl mb-8 font-amaranth">About</h1>
 

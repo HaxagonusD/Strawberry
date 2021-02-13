@@ -10,14 +10,14 @@ const useTranslateYHalfScreen = () => {
   const start = () => {
     if (!hasHappened) {
       setHasHappened(true);
-      setProps({ transform: "translateY(50%)" });
+      setProps({ transform: "translateY(-50%)" });
     }
   };
 
   const undo = () => {
     if (hasHappened) {
       setHasHappened(false);
-      setProps({ transform: "translateY(-50%)" });
+      setProps({ transform: "translateY(50%)" });
     }
   };
 
