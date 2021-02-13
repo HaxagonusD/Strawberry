@@ -19,9 +19,10 @@ const StrawberryButton = () => {
       <Strawberry
         onClick={() => {
           console.log(mediaRecorder.state);
-          mediaRecorder.start();
-
-          setTimeout(() => mediaRecorder.stop(), 15000);
+          if (!recording) {
+            mediaRecorder.start();
+            setTimeout(() => mediaRecorder.stop(), 15000);
+          }
         }}
       ></Strawberry>
     </div>

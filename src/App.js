@@ -2,34 +2,27 @@
 import tw from "twin.macro";
 import "./App.css";
 import StrawberryButton from "./components/StrawberryButton";
-import { useSpring, animated } from "react-spring";
-import { useState, useEffect } from "react";
+import { animated } from "react-spring";
+import useTranslateYHalfScreen from "./hooks/useTranslateYHalfScreen";
+import useTranslateXHalfScreen from "./hooks/useTranslateXHalfScreen";
 function App() {
-  // const dispatch = useDispatch();
-  // const blobUrl = useSelector((state) => state.recorder.blobUrl);
-  // dispatch(fetchSongs(blobUrl));
-
-  const [props, setProps] = useSpring(() => ({
-    transform: "translateY(0%)",
-  }));
-  const [toggle, setToggle] = useState(false);
+  const [props, start, undo] = useTranslateXHalfScreen();
 
   return (
     <div tw="w-full h-screen overflow-hidden">
       <div
         onClick={() => {
-          if (toggle) {
-            setToggle(false);
-            setProps({
-              transform: "translateY(50%)",
-              from: { transform: "translateY(50%)" },
-            });
-          }
+          undo();
         }}
         className="App"
-        tw="flex w-full h-screen justify-around items-center bg-melon flex-col "
+        style={{
+          background: "rgb(255,180,162)",
+          background:
+            "radial-gradient(circle, rgba(255,180,162,1) 0%, rgba(255,226,219,1) 100%)",
+        }}
+        tw="flex w-full h-screen justify-around items-center flex-col "
       >
-        <h1 tw="font-yellowtail text-white text-6xl bg-melon lg:text-8xl">
+        <h1 tw="font-yellowtail text-white text-6xl lg:text-8xl bg-opacity-0">
           Strawberry
         </h1>
         <StrawberryButton />
@@ -37,15 +30,14 @@ function App() {
           <div tw="flex justify-around lg:mx-24 p-8 ">
             <div
               onClick={() => {
-                setProps({ transform: "translateY(-50%)" });
-                setToggle(true);
+                start();
               }}
-              tw="text-white text-4xl hover:cursor-pointer hover:bg-white hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+              tw="text-white text-4xl hover:cursor-pointer bg-isbaelline text-melon lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
             >
               About
             </div>
-            <div tw="text-white text-4xl hover:cursor-pointer hover:bg-white hover:text-black font-amaranth p-2 rounded px-8 transition-all ">
-              Save
+            <div tw="text-white text-4xl hover:cursor-pointer bg-isbaelline text-melon lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all ">
+              Saved
             </div>
           </div>
         </div>
@@ -54,7 +46,7 @@ function App() {
         style={{
           ...props,
         }}
-        tw="min-h-screen relative bg-isbaelline p-10 rounded m-6"
+        tw="min-h-screen absolute inset-y-0 left-0 bg-isbaelline w-1/2 p-10 rounded "
       >
         <h1 tw="text-5xl mb-8 font-amaranth">About</h1>
 
