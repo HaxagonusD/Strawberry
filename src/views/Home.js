@@ -11,13 +11,31 @@ function App() {
   });
 
   const [aboutXProps, setAboutXProps] = useSpring(() => ({
-    to: { aboutX: "translateX(-100%)", strawberry: "translateX(0vw)" },
-    from: { aboutX: "translateX(-100%)", strawberry: "translateX(0vw)" },
+    to: {
+      aboutX: "translateX(-100%)",
+      strawberry: "translateX(0vw)",
+      save: "translateX(0%)",
+    },
+    from: {
+      aboutX: "translateX(-100%)",
+      strawberry: "translateX(0vw)",
+      save: "translateX(0%)",
+    },
+    config: {
+      mass: 1,
+      tension: 200,
+      friction: 26,
+    },
   }));
 
   const [aboutYProps, setAboutYProps] = useSpring(() => ({
     to: { aboutY: "translateY(0%)", strawberry: "translateY(0%)" },
     from: { aboutY: "translateY(0%)", strawberry: "translateY(0%)" },
+    config: {
+      mass: 2,
+      tension: 170,
+      friction: 20,
+    },
   }));
 
   return (
@@ -29,10 +47,12 @@ function App() {
               to: {
                 aboutX: "translateX(-100%)",
                 strawberry: "translateX(0vw)",
+                save: "translateX(0%)",
               },
               from: {
                 aboutX: "translateX(0%)",
                 strawberry: "translateX(25vw)",
+                save: "translateX(30%)",
               },
             });
           } else {
@@ -75,10 +95,12 @@ function App() {
                     to: {
                       aboutX: "translateX(0%)",
                       strawberry: "translateX(25vw)",
+                      save: "translateX(30%)",
                     },
                     from: {
                       aboutX: "translateX(-100%)",
                       strawberry: "translateX(0vw)",
+                      save: "translateX(0%)",
                     },
                   });
                 } else {
@@ -99,9 +121,12 @@ function App() {
             >
               About
             </div>
-            <div tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all ">
+            <animated.div
+              style={{ transform: aboutXProps.save }}
+              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+            >
               Saved
-            </div>
+            </animated.div>
           </div>
         </div>
       </div>
