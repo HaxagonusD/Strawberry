@@ -9,15 +9,19 @@ import {
   startRecording,
 } from "../features/recorder/actions";
 
+import { useHistory } from "react-router-dom";
+
 import { fetchSongs } from "../features/songs/actions";
 
 const useRecorder = () => {
   const [mediaRecorder, setMediaRecorder] = useState(undefined);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onStop = (data) => {
     dispatch(stopRecording());
     dispatch(fetchSongs(data));
+    history.push("/lyrics");
   };
 
   const onStart = () => {
