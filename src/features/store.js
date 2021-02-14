@@ -8,6 +8,7 @@ const store = createStore(
   combineReducers({ songs, recorder }),
   composeWithDevTools(applyMiddleware(thunk))
 );
+
 store.subscribe(() => {
   console.log(store.getState());
 });

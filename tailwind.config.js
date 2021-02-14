@@ -9,6 +9,9 @@ module.exports = {
         pink: "#FCD5CE",
         puff: "#F9DCC4",
         crayola: "#FEC89A",
+        pastel: "#E5989B",
+        english: "#B5838D",
+        liver: "#5A5760",
       },
       fontFamily: {
         amaranth: ["Amaranth", "sans-serif"],
