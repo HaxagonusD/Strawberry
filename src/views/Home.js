@@ -4,6 +4,7 @@ import tw from "twin.macro";
 import StrawberryButton from "../components/StrawberryButton";
 import { useSpring, animated } from "react-spring";
 import { useMediaQuery } from "react-responsive";
+import SavedSongsPanel from "../components/SavedSongsPanel";
 
 function App() {
   const isDesktopOrLaptop = useMediaQuery({
@@ -12,14 +13,14 @@ function App() {
 
   const [aboutXProps, setAboutXProps] = useSpring(() => ({
     to: {
-      aboutX: "translateX(-100%)",
-      strawberry: "translateX(0vw)",
-      save: "translateX(0%)",
+      aboutX: "translate(-100%, 0%)",
+      strawberry: "translate(0vw,0%)",
+      save: "translate(100%,0%)",
     },
     from: {
-      aboutX: "translateX(-100%)",
-      strawberry: "translateX(0vw)",
-      save: "translateX(0%)",
+      aboutX: "translate(-100%,0%)",
+      strawberry: "translate(0vw, 0%)",
+      save: "translate(100%, 0%)",
     },
     config: {
       mass: 1,
@@ -29,41 +30,41 @@ function App() {
   }));
 
   const [aboutYProps, setAboutYProps] = useSpring(() => ({
-    to: { aboutY: "translateY(0%)", strawberry: "translateY(0%)" },
-    from: { aboutY: "translateY(0%)", strawberry: "translateY(0%)" },
+    to: {
+      aboutY: "translate(0%, 0%)",
+      strawberry: "translate(0vw,0%)",
+      save: "translate(0%,100%)",
+    },
+    from: {
+      aboutY: "translate(0%, 0%)",
+      strawberry: "translate(0vw,0%)",
+      save: "translate(0%,100%)",
+    },
     config: {
-      mass: 2,
-      tension: 170,
-      friction: 20,
+      mass: 1,
+      tension: 200,
+      friction: 26,
     },
   }));
 
   return (
-    <div tw="w-full h-screen overflow-hidden">
+    <div tw="w-full h-screen ">
       <div
         onClick={() => {
           if (isDesktopOrLaptop) {
             setAboutXProps({
               to: {
-                aboutX: "translateX(-100%)",
-                strawberry: "translateX(0vw)",
-                save: "translateX(0%)",
-              },
-              from: {
-                aboutX: "translateX(0%)",
-                strawberry: "translateX(25vw)",
-                save: "translateX(30%)",
+                aboutX: "translate(-100%,0%)",
+                strawberry: "translate(0vw, 0%)",
+                save: "translate(100%,0%)",
               },
             });
           } else {
             setAboutYProps({
               to: {
-                aboutY: "translateY(0%)",
-                strawberry: "translateY(0%)",
-              },
-              from: {
-                aboutY: "translateY(-50%)",
-                strawberry: "translateY(-65%)",
+                aboutY: "translate(0%, 0%)",
+                save: "translate(0%, 100%)",
+                strawberry: "translate(0%, 0%)",
               },
             });
           }
@@ -93,26 +94,17 @@ function App() {
                 if (isDesktopOrLaptop) {
                   setAboutXProps({
                     to: {
-                      aboutX: "translateX(0%)",
-                      strawberry: "translateX(25vw)",
-                      save: "translateX(30%)",
-                    },
-                    from: {
-                      aboutX: "translateX(-100%)",
-                      strawberry: "translateX(0vw)",
-                      save: "translateX(0%)",
+                      aboutX: "translate(0%,0%)",
+                      strawberry: "translate(25vw,0%)",
+                      save: "translate(100%, 0%)",
                     },
                   });
                 } else {
-                  console.log("Mobile");
+                  console.log("in about mobile");
                   setAboutYProps({
                     to: {
-                      aboutY: "translateX(-50%)",
-                      strawberry: "translateY(-65%)",
-                    },
-                    from: {
-                      aboutY: "translateX(0%)",
-                      strawberry: "translateY(0%)",
+                      aboutY: "translate(0%, -50%)",
+                      strawberry: "translate(0%, -54%)",
                     },
                   });
                 }
@@ -122,8 +114,27 @@ function App() {
               About
             </div>
             <animated.div
-              style={{ transform: aboutXProps.save }}
               tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+              onClick={(event) => {
+                event.stopPropagation();
+                if (isDesktopOrLaptop) {
+                  setAboutXProps({
+                    to: {
+                      aboutX: "translate(-100%,0%)",
+                      save: "translate(0%,0%)",
+                      strawberry: "translate(-25vw,0%)",
+                    },
+                  });
+                } else {
+                  setAboutYProps({
+                    to: {
+                      aboutY: "translate(0%,0%)",
+                      save: "translate(0%, 50%)",
+                      strawberry: "translate(0%, -54%)",
+                    },
+                  });
+                }
+              }}
             >
               Saved
             </animated.div>
@@ -136,17 +147,20 @@ function App() {
             ? { transform: aboutXProps.aboutX }
             : { transform: aboutYProps.aboutY }
         }
-        tw="min-h-screen lg:absolute lg:inset-y-0 lg:left-0 bg-isbaelline w-full lg:w-1/2 p-10 rounded shadow-xl "
+        tw="min-h-screen lg:fixed lg:inset-y-0 lg:left-0 bg-isbaelline w-full lg:w-1/2 p-10 rounded shadow-xl "
       >
         <h1 tw="text-5xl mb-8 font-amaranth text-liver">About</h1>
 
-        <p tw="text-liver  text-lg">
+        <p tw="text-liver text-lg">
           Ever not know the name of the song you’re listening to? Strawberry is
           here to help you out. Just press the Strawberry icon and in a few
           moments you will know the name of the song with lyrics to it too, if
           any.
         </p>
       </animated.div>
+      <SavedSongsPanel
+        savedProps={isDesktopOrLaptop ? aboutXProps : aboutYProps}
+      />
     </div>
   );
 }

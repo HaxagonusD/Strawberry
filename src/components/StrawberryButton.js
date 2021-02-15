@@ -23,7 +23,9 @@ const StrawberryButton = ({ aboutProps }) => {
   return (
     <div>
       <AnimatedStrawberry
-        style={{ transform: aboutProps.strawberry }}
+        style={{
+          transform: aboutProps.strawberry,
+        }}
         onClick={() => {
           console.log(mediaRecorder.state);
           if (!recording) {

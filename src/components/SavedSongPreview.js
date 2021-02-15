@@ -11,7 +11,7 @@ const SavedSongPreview = ({ image, title, artist }) => {
         id="information"
         tw="bg-liver  w-6/12 h-44 row-span-1 rounded-r-md text-isbaelline text-2xl p-4 flex items-center"
       >
-        {title} by {artist}
+        {title ? ` ${title} by ${artist} ` : ``}
       </div>
     </div>
   );

@@ -7,10 +7,6 @@ const initialState = {
   errorMessage: "",
 };
 
-const fetchSongs = () => {
-  return async (blobUrl) => {};
-};
-
 const songsReducer = (state = initialState, action) => {
   const actions = {
     "songs/songLoaded": () => {
@@ -31,6 +27,12 @@ const songsReducer = (state = initialState, action) => {
     },
     "songs/loadingSong": () => {
       return { ...state, loading: true };
+    },
+    "songs/saveCurrentSong": () => {
+      return {
+        ...state,
+        savedSongs: [...state.savedSongs, state.lastSongIdentified],
+      };
     },
   };
   const currentAction = actions[action.type];
