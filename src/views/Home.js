@@ -48,7 +48,7 @@ function App() {
   }));
 
   return (
-    <div tw="w-full h-screen ">
+    <div tw="w-full h-screen overflow-hidden">
       <div
         onClick={() => {
           if (isDesktopOrLaptop) {
