@@ -15,12 +15,12 @@ function App() {
     to: {
       aboutX: "translate(-100%, 0%)",
       strawberry: "translate(0vw,0%)",
-      save: "translate(100%,0%)",
+      save: "translate(200%,0%)",
     },
     from: {
       aboutX: "translate(-100%,0%)",
       strawberry: "translate(0vw, 0%)",
-      save: "translate(100%, 0%)",
+      save: "translate(200%, 0%)",
     },
     config: {
       mass: 1,
@@ -56,7 +56,7 @@ function App() {
               to: {
                 aboutX: "translate(-100%,0%)",
                 strawberry: "translate(0vw, 0%)",
-                save: "translate(100%,0%)",
+                save: "translate(200%,0%)",
               },
             });
           } else {
@@ -96,7 +96,7 @@ function App() {
                     to: {
                       aboutX: "translate(0%,0%)",
                       strawberry: "translate(25vw,0%)",
-                      save: "translate(100%, 0%)",
+                      save: "translate(200%, 0%)",
                     },
                   });
                 } else {
@@ -121,7 +121,7 @@ function App() {
                   setAboutXProps({
                     to: {
                       aboutX: "translate(-100%,0%)",
-                      save: "translate(0%,0%)",
+                      save: "translate(100%,0%)",
                       strawberry: "translate(-25vw,0%)",
                     },
                   });
