@@ -2,12 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import About from "./components /About";
+import { Provider } from "react-redux";
+import store from "./features/store";
+import { GlobalStyles } from "twin.macro";
+require("typeface-yellowtail");
+require("typeface-amaranth");
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <About />
+    <Provider store={store}>
+      <GlobalStyles />
+
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,48 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-import { fetchSongs } from "./features/songs/actions";
-import createRecorder from "./services/configureRecorder";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./views/Home";
+import SongDetails from "./views/SongDetails";
 
-import "./App.css";
-import SongFinder from "../src/components /SongFinder";
-function App() {
-  // const dispatch = useDispatch();
-  // const blobUrl = useSelector((state) => state.recorder.blobUrl);
-  // dispatch(fetchSongs(blobUrl));
-
-  const mediaRecorder = useRef(null);
-
-  useEffect(() => {
-    if (navigator?.mediaDevices?.getUserMedia) {
-      console.log("getUserMedia supported ");
-      mediaRecorder.current = createRecorder();
-    } else {
-      console.log("getUserMedia not supported on your browser");
-    }
-  }, []);
-
-  const recorder = mediaRecorder.current ? (
-    <div>
-      <button
-        onClick={() => {
-          mediaRecorder.current.start();
-        }}
-      >
-        Start Recorder
-      </button>
-      <button
-        onClick={() => {
-          mediaRecorder.current.stop();
-        }}
-      >
-        Stop
-      </button>
-    </div>
-  ) : (
-    ""
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/lyrics">
+          <SongDetails />
+        </Route>
+      </Switch>
+    </Router>
   );
-
-  return <div className="App">{recorder}</div>;
-}
+};
 
 export default App;
