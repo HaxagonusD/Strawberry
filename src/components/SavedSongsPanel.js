@@ -13,6 +13,13 @@ const SavedSongsPanel = ({ savedProps }) => {
     >
       <h1 tw="text-5xl mb-8 font-amaranth text-liver">Saved Songs</h1>
       <div tw="flex flex-col items-center">
+        {savedSongs.length === 0 ? (
+          <div tw="text-lg text-liver">
+            No saved songs. Press the Strawberry!
+          </div>
+        ) : (
+          ""
+        )}
         {savedSongs.map((current, index) => {
           const image = current.data.result.spotify.album.images[0].url;
           const title = current.data.result.title;

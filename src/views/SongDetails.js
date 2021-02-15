@@ -37,15 +37,15 @@ const SongDetails = () => {
 
   console.log(songLyrics);
   return (
-    <div>
-      <div tw="hover:bg-white w-12 h-12 m-8 absolute flex justify-center items-center rounded-full transition-all ease-in-out">
+    <div tw="min-h-screen ">
+      <div tw=" bg-white hover:bg-isbaelline w-12 h-12 m-6 absolute flex justify-center items-center rounded-full transition-all ease-in-out">
         <Link to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            tw="w-8 h-8 text-liver"
+            tw="w-8 h-8 text-liver "
           >
             <path
               strokeLinecap="round"
@@ -56,21 +56,23 @@ const SongDetails = () => {
           </svg>
         </Link>
       </div>
-      <div tw="bg-pink  p-8 flex flex-col justify-center items-center">
+      <div tw="bg-pink p-8 flex flex-col justify-center items-center min-h-screen ">
         <SavedSongPreview image={image} title={title} artist={artist} />
 
-        <div tw="bg-white shadow-lg w-full p-10 mt-12 lg:w-1/2">
-          <h1 tw="text-liver font-amaranth text-4xl mb-4">Lyrics</h1>
+        <div tw="bg-white shadow-lg w-full p-10 mt-12 lg:w-1/2 flex justify-between items-start mb-4">
+          <div>
+            <h1 tw="text-liver font-amaranth text-4xl  p-4 ">Lyrics</h1>
 
+            <div>{lyricsParser(songLyrics)}</div>
+          </div>
           <button
-            tw="p-4 bg-red-500"
+            tw="p-4 text-2xl text-liver bg-isbaelline font-amaranth mt-1 hover:bg-puff"
             onClick={() => {
               dispatch(saveCurrentSong());
             }}
           >
-            Saved something
+            Save Song
           </button>
-          {lyricsParser(songLyrics)}
         </div>
       </div>
     </div>

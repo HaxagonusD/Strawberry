@@ -151,11 +151,10 @@ function App() {
       >
         <h1 tw="text-5xl mb-8 font-amaranth text-liver">About</h1>
 
-        <p tw="text-liver text-lg">
+        <p tw="text-liver text-lg lg:text-2xl">
           Ever not know the name of the song you’re listening to? Strawberry is
-          here to help you out. Just press the Strawberry icon and in a few
-          moments you will know the name of the song with lyrics to it too, if
-          any.
+          here to help you out. Press the Strawberry icon and in a few moments
+          you will know the name of the song with lyrics to it too, if any.
         </p>
       </animated.div>
       <SavedSongsPanel
