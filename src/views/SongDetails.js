@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import tw from "twin.macro";
 import SavedSongPreview from "../components/SavedSongPreview";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { saveCurrentSong } from "../features/songs/actions";
 import { Link } from "react-router-dom";
 //lyrics and mini song details go in here
 //
 const SongDetails = () => {
+  const dispatch = useDispatch();
   const songLyrics = useSelector(
     (state) => state?.songs?.lastSongIdentified?.data?.result?.lyrics?.lyrics
   );
@@ -59,6 +61,15 @@ const SongDetails = () => {
 
         <div tw="bg-white shadow-lg w-full p-10 mt-12 lg:w-1/2">
           <h1 tw="text-liver font-amaranth text-4xl mb-4">Lyrics</h1>
+
+          <button
+            tw="p-4 bg-red-500"
+            onClick={() => {
+              dispatch(saveCurrentSong());
+            }}
+          >
+            Saved something
+          </button>
           {lyricsParser(songLyrics)}
         </div>
       </div>

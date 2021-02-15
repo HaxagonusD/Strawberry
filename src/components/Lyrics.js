@@ -1,4 +1,5 @@
-function Home(){
-    return()
+function Lyrics() {
+  return <div>this is the lyrics component</div>;
 }
-export default Home
+export default Lyrics;
+
