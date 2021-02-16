@@ -29,6 +29,8 @@
 <img src= "./Images/FigmaAbout.png">
 <img src= "./Images/Figmaphone.png" style="max-width:60%">
 
+## Component Hierarchy 
 
+<iframe style="border:none" width="800" height="450" src="https://whimsical.com/embed/Fdk3TeCV4aJ84me4KfcSre"></iframe>
 
 
