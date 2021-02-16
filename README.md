@@ -39,7 +39,7 @@
 
 ## The Build
 
-    We built a wireframe layout using figma. We spent a week building the project using React and Redux to pass data throughout the components.
+> We built a wireframe layout using figma. We spent a week building the project using React and Redux to pass data throughout the components.
 
 <img src= "./Images/Figma2.png">
 <img src= "./Images/FigmaAbout.png">
