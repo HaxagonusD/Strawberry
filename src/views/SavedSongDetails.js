@@ -3,27 +3,28 @@ import tw from "twin.macro";
 import SavedSongPreview from "../components/SavedSongPreview";
 import { useSelector, useDispatch } from "react-redux";
 import { saveCurrentSong } from "../features/songs/actions";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 //lyrics and mini song details go in here
 //
-const SongDetails = () => {
+const SavedSongDetails = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
+
   const songLyrics = useSelector(
-    (state) => state?.songs?.lastSongIdentified?.data?.result?.lyrics?.lyrics
+    (state) => state?.songs?.savedSongs[id]?.data?.result?.lyrics?.lyrics
   );
 
   const image = useSelector(
     (state) =>
-      state?.songs?.lastSongIdentified?.data?.result?.spotify?.album?.images[0]
-        .url
+      state?.songs?.savedSongs[id]?.data?.result?.spotify?.album?.images[0].url
   );
 
   const title = useSelector(
-    (state) => state.songs.lastSongIdentified?.data?.result?.title
+    (state) => state.songs.savedSongs[id]?.data?.result?.title
   );
 
   const artist = useSelector(
-    (state) => state.songs.lastSongIdentified?.data?.result?.artist
+    (state) => state.songs.savedSongs[id]?.data?.result?.artist
   );
   const lyricsParser = (songLyrics) => {
     if (!songLyrics) {
@@ -65,18 +66,10 @@ const SongDetails = () => {
 
             <div>{lyricsParser(songLyrics)}</div>
           </div>
-          <button
-            tw="p-4 text-2xl text-liver bg-isbaelline font-amaranth mt-1 hover:bg-puff"
-            onClick={() => {
-              dispatch(saveCurrentSong());
-            }}
-          >
-            Save Song
-          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default SongDetails;
+export default SavedSongDetails;

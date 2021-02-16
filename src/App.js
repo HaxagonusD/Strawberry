@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./views/Home";
-import SongDetails from "./views/SongDetails";
+import CurrentSongDetails from "./views/CurrentSongDetails";
+import SavedSongsDetails from "./views/SavedSongDetails";
 
 const App = () => {
   return (
@@ -10,7 +11,10 @@ const App = () => {
           <Home />
         </Route>
         <Route path="/lyrics">
-          <SongDetails />
+          <CurrentSongDetails />
+        </Route>
+        <Route path="/saved/:id">
+          <SavedSongsDetails />
         </Route>
       </Switch>
     </Router>

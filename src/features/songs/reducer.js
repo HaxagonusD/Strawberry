@@ -1,10 +1,11 @@
 const initialState = {
-  allSongs: {},
+  // allSongs: {},
   lastSongIdentified: {},
   savedSongs: [],
   loading: false,
   error: false,
   errorMessage: "",
+  isSongSaved: false,
 };
 
 const songsReducer = (state = initialState, action) => {
@@ -15,6 +16,7 @@ const songsReducer = (state = initialState, action) => {
         loading: false,
         lastSongIdentified: action.payload,
         error: false,
+        isSongSaved: false,
       };
     },
     "songs/errorFetchingSongs": () => {
@@ -29,10 +31,15 @@ const songsReducer = (state = initialState, action) => {
       return { ...state, loading: true };
     },
     "songs/saveCurrentSong": () => {
-      return {
-        ...state,
-        savedSongs: [...state.savedSongs, state.lastSongIdentified],
-      };
+      if (!state.isSongSaved) {
+        return {
+          ...state,
+          savedSongs: [...state.savedSongs, state.lastSongIdentified],
+          isSongSaved: true,
+        };
+      } else {
+        return state;
+      }
     },
   };
   const currentAction = actions[action.type];
