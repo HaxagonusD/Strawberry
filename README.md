@@ -1,4 +1,3 @@
-<!-- # Music Speech Lyric finder Go
 
 # [StrawBerry](https://strawberrysound.netlify.app/)
 
@@ -13,8 +12,6 @@
 > - TailwindCSS
 
 # Strawberry
-
-<!-- ABOUT THE PROJECT -->
 
 ## What it does
 
@@ -34,6 +31,6 @@
 <img src= "./Images/FigmaAbout.png">
 <img src= "./Images/Figmaphone.png" style="max-width:60%">
 
-<!-- ## Accomplishments  -->
+
 
 
