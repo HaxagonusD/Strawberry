@@ -31,6 +31,6 @@
 
 ## Component Hierarchy 
 
-<img src="blob:https://whimsical.com/49e62803-3f96-40e6-898e-1d13b4d7ce99">
+<img src="https://whimsical.com/49e62803-3f96-40e6-898e-1d13b4d7ce99">
 
 
