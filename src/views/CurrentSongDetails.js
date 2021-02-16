@@ -53,7 +53,7 @@ const CurrentSongDetails = () => {
   console.log(songLyrics);
   return (
     <div tw="min-h-screen ">
-      <div tw=" bg-white hover:bg-isbaelline w-12 h-12 m-6 absolute flex justify-center items-center rounded-full transition-all ease-in-out">
+      <div tw="z-10 bg-white hover:bg-isbaelline w-12 h-12 m-6 fixed flex justify-center items-center rounded-full transition-all ease-in-out">
         <Link to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,8 +105,10 @@ const CurrentSongDetails = () => {
           </div>
         </div>
       ) : (
-        <div tw="fixed w-full min-h-screen flex justify-center items-center">
-          <div tw="text-liver text-8xl ">Loading! Give me a sec</div>
+        <div>
+          <div tw="fixed w-full min-h-screen flex justify-center items-center">
+            <div tw="text-liver text-8xl font-amaranth">Give me a sec...</div>
+          </div>
         </div>
       )}
     </div>
