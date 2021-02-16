@@ -11,8 +11,6 @@
 > - React Spring
 > - TailwindCSS
 
-# Strawberry
-
 ## What it does
 
    <p> Strawberry is an Music Identifier Application. The app give users the
