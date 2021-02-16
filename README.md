@@ -16,19 +16,6 @@
 
 <!-- ABOUT THE PROJECT -->
 
-### Authentication
-
-1. Sign up with Telegram for a free API Key at [https://audd.io/](https://audd.io/)
-
-2. git clone https://github.com/HaxagonusD/Strawberry
-
-3. Install NPM packages:
-   ```npm install```
-
-4. NPM Start
-
-# Innovation
-
 ## What it does
 
    <p> Strawberry is an Music Identifier Application. The app give users the
