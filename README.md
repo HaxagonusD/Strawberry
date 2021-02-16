@@ -1,5 +1,7 @@
 <!-- # Music Speech Lyric finder Go
 
+# [StrawBerry](https://strawberrysound.netlify.app/)
+
 ### Ever have trouble finding that song that's in your head? Well Music Speech lyric finder go is your solution
 
 ### Just use your voice to find the lyrics of the song you're thinking about and music speech lyric finder go will help you out
@@ -47,18 +49,4 @@
 
 <!-- ## Accomplishments  -->
 
-## What We Learned
 
-<ul>
-<li> Tailwind CSS</li>
-<li> Redux</li>
-<li>Working with AudD API</li>
-</ul>
-
-## Built With
-
-
-<li>React</li>
-<li>Redux</li>
-<li>CSS</li>
-</ul>
