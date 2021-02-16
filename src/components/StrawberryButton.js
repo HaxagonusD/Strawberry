@@ -10,10 +10,10 @@ const StrawberryButton = ({ aboutProps }) => {
 
   const styleMap = {
     recording: animated(
-      tw.div`relative bg-crayola w-48 h-48 rounded-full animate-pulse transition-all ease-in-out duration-500 `
+      tw.div`relative bg-pastel w-48 h-48 rounded-full animate-ping `
     ),
     notRecording: animated(
-      tw.div`relative bg-pastel w-48 h-48 rounded-full hover:bg-isbaelline transition-all ease-in-out duration-500 `
+      tw.div`relative bg-pastel w-48 h-48 rounded-full cursor-pointer `
     ),
   };
 

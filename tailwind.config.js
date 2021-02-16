@@ -12,6 +12,9 @@ module.exports = {
         pastel: "#E5989B",
         english: "#B5838D",
         liver: "#5A5760",
+        hotpink: "#FF69B4",
+        nicered: "#D65C60",
+        xanadu: "#7B886F",
       },
       fontFamily: {
         amaranth: ["Amaranth", "sans-serif"],
