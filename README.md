@@ -6,8 +6,9 @@
 
 ## Tech used
 
-> - MusicMatch API
-> - Alan.ai  -->
+> - AudD API
+> - React Spring
+> - TailwindCSS
 
 # Strawberry
 
@@ -20,11 +21,7 @@
 2. git clone https://github.com/HaxagonusD/Strawberry
 
 3. Install NPM packages:
-   npm install
-   axios
-   redux
-   react-redux
-   redux-thunk
+   ```npm install```
 
 4. NPM Start
 
@@ -60,7 +57,6 @@
 
 ## Built With
 
-    <ul>
 
 <li>React</li>
 <li>Redux</li>
