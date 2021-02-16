@@ -1,5 +1,5 @@
 
-# [StrawBerry](https://strawberrysound.netlify.app/)
+# [Strawberry](https://strawberrysound.netlify.app/)
 
 ### Ever have trouble finding that song that's in your head? Well Music Speech lyric finder go is your solution
 
