@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function identifySongFromBlob(blob) {
   let data = {
-    api_token: "041abfc5c3c035b2e8978417c7fcfa10",
+    api_token: "44954b8ed957bdbdfbfa8c442de9a8e0",
     audio: blob,
     return: "apple_music,spotify,lyrics",
   };
