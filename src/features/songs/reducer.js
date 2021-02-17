@@ -1,14 +1,11 @@
 const initialState = {
-  allSongs: {},
+  // allSongs: {},
   lastSongIdentified: {},
   savedSongs: [],
   loading: false,
   error: false,
   errorMessage: "",
-};
-
-const fetchSongs = () => {
-  return async (blobUrl) => {};
+  isSongSaved: false,
 };
 
 const songsReducer = (state = initialState, action) => {
@@ -19,6 +16,7 @@ const songsReducer = (state = initialState, action) => {
         loading: false,
         lastSongIdentified: action.payload,
         error: false,
+        isSongSaved: false,
       };
     },
     "songs/errorFetchingSongs": () => {
@@ -31,6 +29,17 @@ const songsReducer = (state = initialState, action) => {
     },
     "songs/loadingSong": () => {
       return { ...state, loading: true };
+    },
+    "songs/saveCurrentSong": () => {
+      if (!state.isSongSaved) {
+        return {
+          ...state,
+          savedSongs: [...state.savedSongs, state.lastSongIdentified],
+          isSongSaved: true,
+        };
+      } else {
+        return state;
+      }
     },
   };
   const currentAction = actions[action.type];

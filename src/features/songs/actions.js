@@ -30,3 +30,9 @@ export const fetchSongs = (blobUrl) => {
       : dispatch(errorFetchingSongs(songDataOrError));
   };
 };
+
+export const saveCurrentSong = () => {
+  return {
+    type: "songs/saveCurrentSong",
+  };
+};

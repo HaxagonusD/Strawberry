@@ -4,6 +4,9 @@ import tw from "twin.macro";
 import StrawberryButton from "../components/StrawberryButton";
 import { useSpring, animated } from "react-spring";
 import { useMediaQuery } from "react-responsive";
+import SavedSongsPanel from "../components/SavedSongsPanel";
+import github from "../images/github.svg";
+import linkedin from "../images/linkedin.svg";
 
 function App() {
   const isDesktopOrLaptop = useMediaQuery({
@@ -12,14 +15,18 @@ function App() {
 
   const [aboutXProps, setAboutXProps] = useSpring(() => ({
     to: {
-      aboutX: "translateX(-100%)",
-      strawberry: "translateX(0vw)",
-      save: "translateX(0%)",
+      aboutX: "translate(-100%, 0%)",
+      strawberry: "translate(0vw,0%)",
+      save: "translate(200%,0%)",
+      aboutButton: "translate(0%,0%)",
+      saveButton: "translate(0%,0%)",
     },
     from: {
-      aboutX: "translateX(-100%)",
-      strawberry: "translateX(0vw)",
-      save: "translateX(0%)",
+      aboutX: "translate(-100%,0%)",
+      strawberry: "translate(0vw, 0%)",
+      save: "translate(200%, 0%)",
+      aboutButton: "translate(0%,0%)",
+      saveButton: "translate(0%,0%)",
     },
     config: {
       mass: 1,
@@ -29,12 +36,20 @@ function App() {
   }));
 
   const [aboutYProps, setAboutYProps] = useSpring(() => ({
-    to: { aboutY: "translateY(0%)", strawberry: "translateY(0%)" },
-    from: { aboutY: "translateY(0%)", strawberry: "translateY(0%)" },
+    to: {
+      aboutY: "translate(0%, 0%)",
+      strawberry: "translate(0vw,0%)",
+      save: "translate(0%,100%)",
+    },
+    from: {
+      aboutY: "translate(0%, 0%)",
+      strawberry: "translate(0vw,0%)",
+      save: "translate(0%,100%)",
+    },
     config: {
-      mass: 2,
-      tension: 170,
-      friction: 20,
+      mass: 1,
+      tension: 200,
+      friction: 26,
     },
   }));
 
@@ -45,25 +60,19 @@ function App() {
           if (isDesktopOrLaptop) {
             setAboutXProps({
               to: {
-                aboutX: "translateX(-100%)",
-                strawberry: "translateX(0vw)",
-                save: "translateX(0%)",
-              },
-              from: {
-                aboutX: "translateX(0%)",
-                strawberry: "translateX(25vw)",
-                save: "translateX(30%)",
+                aboutX: "translate(-100%,0%)",
+                strawberry: "translate(0vw, 0%)",
+                save: "translate(200%,0%)",
+                aboutButton: "translate(0%,0%)",
+                saveButton: "translate(0%,0%)",
               },
             });
           } else {
             setAboutYProps({
               to: {
-                aboutY: "translateY(0%)",
-                strawberry: "translateY(0%)",
-              },
-              from: {
-                aboutY: "translateY(-50%)",
-                strawberry: "translateY(-65%)",
+                aboutY: "translate(0%, 0%)",
+                save: "translate(0%, 100%)",
+                strawberry: "translate(0%, 0%)",
               },
             });
           }
@@ -78,7 +87,7 @@ function App() {
       >
         <animated.h1
           style={{ transform: aboutXProps.strawberry }}
-          tw="font-yellowtail text-white text-6xl lg:text-8xl bg-opacity-0"
+          tw="font-yellowtail text-white text-6xl lg:text-8xl lg:text-8xl bg-opacity-0"
         >
           Strawberry
         </animated.h1>
@@ -87,43 +96,62 @@ function App() {
         />
         <div tw="w-full">
           <div tw="flex justify-around lg:mx-24 ">
-            <div
+            <animated.div
               onClick={(event) => {
                 event.stopPropagation();
                 if (isDesktopOrLaptop) {
                   setAboutXProps({
                     to: {
-                      aboutX: "translateX(0%)",
-                      strawberry: "translateX(25vw)",
-                      save: "translateX(30%)",
-                    },
-                    from: {
-                      aboutX: "translateX(-100%)",
-                      strawberry: "translateX(0vw)",
-                      save: "translateX(0%)",
+                      aboutX: "translate(0%,0%)",
+                      strawberry: "translate(25vw,0%)",
+                      save: "translate(200%, 0%)",
+                      aboutButton: "translate(0%,0%)",
+                      saveButton: "translate(35%,0%)",
                     },
                   });
                 } else {
-                  console.log("Mobile");
+                  console.log("in about mobile");
                   setAboutYProps({
                     to: {
-                      aboutY: "translateX(-50%)",
-                      strawberry: "translateY(-65%)",
-                    },
-                    from: {
-                      aboutY: "translateX(0%)",
-                      strawberry: "translateY(0%)",
+                      aboutY: "translate(0%, -100%)",
+                      save: "translate(0%,100%)",
+                      strawberry: "translate(0%, -54%)",
                     },
                   });
                 }
               }}
-              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 "
+              style={{ transform: aboutXProps.aboutButton }}
             >
               About
-            </div>
+            </animated.div>
             <animated.div
-              style={{ transform: aboutXProps.save }}
-              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8  "
+              onClick={(event) => {
+                event.stopPropagation();
+                if (isDesktopOrLaptop) {
+                  console.log("clicked saved in desktop");
+                  setAboutXProps({
+                    to: {
+                      aboutX: "translate(-100%,0%)",
+                      save: "translate(100%,0%)",
+                      strawberry: "translate(-25vw,0%)",
+                      aboutButton: "translate(-35%,0%)",
+                      saveButton: "translate(0%,0%)",
+                    },
+                  });
+                } else {
+                  console.log("clicked the save in mobile");
+                  setAboutYProps({
+                    to: {
+                      aboutY: "translate(0%,0%)",
+                      save: "translate(0%, 0%)",
+                      strawberry: "translate(0%, -54%)",
+                    },
+                  });
+                }
+              }}
+              style={{ transform: aboutXProps.saveButton }}
             >
               Saved
             </animated.div>
@@ -136,17 +164,122 @@ function App() {
             ? { transform: aboutXProps.aboutX }
             : { transform: aboutYProps.aboutY }
         }
-        tw="min-h-screen lg:absolute lg:inset-y-0 lg:left-0 bg-isbaelline w-full lg:w-1/2 p-10 rounded shadow-xl "
+        tw="min-h-screen overflow-visible lg:fixed lg:inset-y-0 lg:left-0 bg-isbaelline w-full lg:w-1/2 p-10 rounded shadow-xl "
       >
-        <h1 tw="text-5xl mb-8 font-amaranth text-liver">About</h1>
+        <div
+          onClick={() => {
+            setAboutYProps({
+              to: {
+                aboutY: "translate(0%, 0% )",
+                save: "translate(0%, 100%)",
+                strawberry: "translate(0%, 0%)",
+              },
+            });
+          }}
+          tw="absolute right-0 top-0 m-4 my-10 mx-6 lg:hidden bg-melon p-2 rounded-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            tw="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 17l-4 4m0 0l-4-4m4 4V3"
+            />
+          </svg>
+        </div>
+        <h1 tw="text-5xl lg:text-8xl mb-8 font-amaranth text-liver">About</h1>
 
-        <p tw="text-liver  text-lg">
+        <p tw="text-liver text-lg lg:text-2xl">
           Ever not know the name of the song you’re listening to? Strawberry is
-          here to help you out. Just press the Strawberry icon and in a few
-          moments you will know the name of the song with lyrics to it too, if
-          any.
+          here to help you out. Press the Strawberry icon and in a few moments
+          you will know the name of the song with lyrics to it too, if any.
+          <br />
+          <span tw="font-amaranth text-liver text-xl my-4 text-blue-500">
+            <a
+              href="https://github.com/HaxagonusD/Strawberry"
+              target="_blank"
+              rel="noopener noreferrer"
+              tw="cursor-pointer"
+            >
+              Github Repo
+            </a>
+          </span>
         </p>
+
+        <div id="contact" tw="mt-4 lg:mt-10">
+          <h1 tw="font-amaranth text-liver text-4xl mb-4">Contributors</h1>
+          <div className="contact" tw="flex flex-col py-4">
+            <h1 tw="font-amaranth text-liver text-2xl">Julian Q</h1>
+            <p tw="text-lg">Full Stack Engineer. Vim lover.</p>
+            <ul tw="flex">
+              <li tw="m-1">
+                <a
+                  href="https://github.com/HaxagonusD"
+                  tw="m-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img alt="github" tw="lg:w-10 lg:h-10 w-4 h-4" src={github} />
+                </a>
+              </li>
+              <li tw="m-1">
+                <a
+                  href="https://www.linkedin.com/in/julian-q-379184ba/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tw="m-1"
+                >
+                  <img
+                    alt="github"
+                    tw="lg:w-10 lg:h-10 w-4 h-4"
+                    src={linkedin}
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="contact">
+            <h1 tw="font-amaranth text-liver text-2xl">Shan Siddiqui</h1>
+            <p>Aspiring Software Engineer. Born-bred New Yorker</p>
+            <ul tw="flex">
+              <li tw="m-1">
+                <a
+                  href="https://github.com/shansiddiqui94"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tw="m-1"
+                >
+                  <img alt="github" tw="lg:w-10 lg:h-10 w-4 h-4" src={github} />
+                </a>
+              </li>
+              <li tw="m-1">
+                <a
+                  href="https://www.linkedin.com/in/ssiddiqui007/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tw="m-1"
+                >
+                  <img
+                    alt="github"
+                    tw="lg:w-10 lg:h-10 w-4 h-4"
+                    src={linkedin}
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </animated.div>
+      <SavedSongsPanel
+        savedProps={isDesktopOrLaptop ? aboutXProps : aboutYProps}
+        setAboutYProps={setAboutYProps}
+      />
     </div>
   );
 }
