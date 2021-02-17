@@ -10,6 +10,7 @@ const CurrentSongDetails = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.songs.loading);
 
+  const isSongSaved = useSelector((state) => state.songs.isSongSaved);
   const styleMapSaved = {
     fill: "red",
     stroke: "red",
@@ -18,8 +19,6 @@ const CurrentSongDetails = () => {
     fill: "none",
     stroke: "currentColor",
   };
-
-  const isSongSaved = useSelector((state) => state.songs.isSongSaved);
 
   const currentStyleMap = isSongSaved ? styleMapSaved : styleMapNotSvaed;
 
@@ -40,6 +39,7 @@ const CurrentSongDetails = () => {
   const artist = useSelector(
     (state) => state.songs.lastSongIdentified?.data?.result?.artist
   );
+
   const lyricsParser = (songLyrics) => {
     if (!songLyrics) {
       return ``;
@@ -50,7 +50,6 @@ const CurrentSongDetails = () => {
     });
   };
 
-  console.log(songLyrics);
   return (
     <div tw="min-h-screen ">
       <div tw="z-10 bg-white hover:bg-isbaelline w-12 h-12 m-6 fixed flex justify-center items-center rounded-full transition-all ease-in-out">

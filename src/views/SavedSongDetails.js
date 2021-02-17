@@ -2,7 +2,6 @@
 import tw from "twin.macro";
 import SavedSongPreview from "../components/SavedSongPreview";
 import { useSelector, useDispatch } from "react-redux";
-import { saveCurrentSong } from "../features/songs/actions";
 import { Link, useParams } from "react-router-dom";
 //lyrics and mini song details go in here
 //
@@ -62,7 +61,7 @@ const SavedSongDetails = () => {
 
         <div tw="bg-white shadow-lg w-full p-10 mt-12 lg:w-1/2 flex justify-between items-start mb-4">
           <div>
-            <h1 tw="text-liver font-amaranth text-4xl  p-4 ">Lyrics</h1>
+            <h1 tw="text-liver font-amaranth text-4xl py-4 ">Lyrics</h1>
 
             <div>{lyricsParser(songLyrics)}</div>
           </div>

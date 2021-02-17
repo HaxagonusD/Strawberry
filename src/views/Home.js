@@ -18,11 +18,15 @@ function App() {
       aboutX: "translate(-100%, 0%)",
       strawberry: "translate(0vw,0%)",
       save: "translate(200%,0%)",
+      aboutButton: "translate(0%,0%)",
+      saveButton: "translate(0%,0%)",
     },
     from: {
       aboutX: "translate(-100%,0%)",
       strawberry: "translate(0vw, 0%)",
       save: "translate(200%, 0%)",
+      aboutButton: "translate(0%,0%)",
+      saveButton: "translate(0%,0%)",
     },
     config: {
       mass: 1,
@@ -59,6 +63,8 @@ function App() {
                 aboutX: "translate(-100%,0%)",
                 strawberry: "translate(0vw, 0%)",
                 save: "translate(200%,0%)",
+                aboutButton: "translate(0%,0%)",
+                saveButton: "translate(0%,0%)",
               },
             });
           } else {
@@ -90,7 +96,7 @@ function App() {
         />
         <div tw="w-full">
           <div tw="flex justify-around lg:mx-24 ">
-            <div
+            <animated.div
               onClick={(event) => {
                 event.stopPropagation();
                 if (isDesktopOrLaptop) {
@@ -99,6 +105,8 @@ function App() {
                       aboutX: "translate(0%,0%)",
                       strawberry: "translate(25vw,0%)",
                       save: "translate(200%, 0%)",
+                      aboutButton: "translate(0%,0%)",
+                      saveButton: "translate(35%,0%)",
                     },
                   });
                 } else {
@@ -112,12 +120,13 @@ function App() {
                   });
                 }
               }}
-              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 "
+              style={{ transform: aboutXProps.aboutButton }}
             >
               About
-            </div>
+            </animated.div>
             <animated.div
-              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8 transition-all "
+              tw="text-liver text-4xl hover:cursor-pointer bg-isbaelline lg:hover:bg-white lg:hover:text-black font-amaranth p-2 rounded px-8  "
               onClick={(event) => {
                 event.stopPropagation();
                 if (isDesktopOrLaptop) {
@@ -127,6 +136,8 @@ function App() {
                       aboutX: "translate(-100%,0%)",
                       save: "translate(100%,0%)",
                       strawberry: "translate(-25vw,0%)",
+                      aboutButton: "translate(-35%,0%)",
+                      saveButton: "translate(0%,0%)",
                     },
                   });
                 } else {
@@ -140,6 +151,7 @@ function App() {
                   });
                 }
               }}
+              style={{ transform: aboutXProps.saveButton }}
             >
               Saved
             </animated.div>
@@ -187,9 +199,20 @@ function App() {
           Ever not know the name of the song you’re listening to? Strawberry is
           here to help you out. Press the Strawberry icon and in a few moments
           you will know the name of the song with lyrics to it too, if any.
+          <br />
+          <span tw="font-amaranth text-liver text-xl my-4 text-blue-500">
+            <a
+              href="https://github.com/HaxagonusD/Strawberry"
+              target="_blank"
+              rel="noopener noreferrer"
+              tw="cursor-pointer"
+            >
+              Github Repo
+            </a>
+          </span>
         </p>
 
-        <div id="contact" tw=" mt-8 lg:mt-20">
+        <div id="contact" tw="mt-4 lg:mt-10">
           <h1 tw="font-amaranth text-liver text-4xl mb-4">Contributors</h1>
           <div className="contact" tw="flex flex-col py-4">
             <h1 tw="font-amaranth text-liver text-2xl">Julian Q</h1>
@@ -223,15 +246,25 @@ function App() {
           </div>
           <div className="contact">
             <h1 tw="font-amaranth text-liver text-2xl">Shan Siddiqui</h1>
-            <p></p>
+            <p>Aspiring Software Engineer. Born-bred New Yorker</p>
             <ul tw="flex">
               <li tw="m-1">
-                <a tw="m-1">
+                <a
+                  href="https://github.com/shansiddiqui94"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tw="m-1"
+                >
                   <img alt="github" tw="lg:w-10 lg:h-10 w-4 h-4" src={github} />
                 </a>
               </li>
               <li tw="m-1">
-                <a tw="m-1">
+                <a
+                  href="https://www.linkedin.com/in/ssiddiqui007/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tw="m-1"
+                >
                   <img
                     alt="github"
                     tw="lg:w-10 lg:h-10 w-4 h-4"
